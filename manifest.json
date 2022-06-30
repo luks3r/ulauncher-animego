@@ -1,0 +1,19 @@
+{
+    "required_api_version": "^2.0.0",
+    "name": "AnimeGo",
+    "description": "Search AnimeGo directly within ULauncher",
+    "developer_name": "Lukser",
+    "icon": "images/icon.png",
+    "options": {
+        "query_debounce": 0.5
+    },
+    "preferences": [
+        {
+            "id": "ag_kw",
+            "type": "keyword",
+            "name": "AnimeGo",
+            "description": "Open keyword",
+            "default_value": "ag"
+        }
+    ]
+}
