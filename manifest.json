@@ -14,6 +14,22 @@
       "name": "AnimeGo",
       "description": "Open keyword",
       "default_value": "ag"
+    },
+    {
+      "id": "title_format",
+      "type": "select",
+      "name": "Title format",
+      "description": "Your preferred title format",
+      "default_value": "Russian",
+      "options": ["Romaji", "Russian"]
+    },
+    {
+      "id": "search_mode",
+      "type": "select",
+      "name": "Search Mode",
+      "description": "Type of content to search for",
+      "default_value": "Anime",
+      "options": ["All", "Anime", "Manga"]
     }
   ]
 }

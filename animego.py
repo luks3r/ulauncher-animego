@@ -43,14 +43,20 @@ def search_request(query: str, search_type: str = animego.All) -> list[Anime]:
     return objects
 
 
-def search(query: str, _: dict[str, str]) -> ExtensionResultItem:
-    results = search_request(query)
+def search(query: str, preferences: dict[str, str]) -> ExtensionResultItem:
+    results = search_request(query, preferences["search_mode"])
     items = []
     for result in results:
         description = f"{result.genre} | {result.year}"
+        title = (
+            result.title
+            if preferences["title_format"].lower() == "russian"
+            else result.romaji
+        )
+
         item = ExtensionResultItem(
             icon=result.image,
-            name=result.title,
+            name=title,
             description=description,
             on_enter=OpenUrlAction(result.url),
         )
