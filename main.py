@@ -1,9 +1,8 @@
 from ulauncher.api.client.Extension import Extension
 from ulauncher.api.client.EventListener import EventListener
-from ulauncher.api.shared.event import KeywordQueryEvent, ItemEnterEvent
-from ulauncher.api.shared.item.ExtensionResultItem import ExtensionResultItem
+from ulauncher.api.shared.event import KeywordQueryEvent
 from ulauncher.api.shared.action.RenderResultListAction import RenderResultListAction
-from ulauncher.api.shared.action.HideWindowAction import HideWindowAction
+import animego
 
 
 class AnimeGoExtension(Extension):
@@ -14,18 +13,11 @@ class AnimeGoExtension(Extension):
 
 class KeywordQueryEventListener(EventListener):
     def on_event(self, event, extension):
-        items = []
-        for i in range(5):
-            items.append(
-                ExtensionResultItem(
-                    icon="images/icon.png",
-                    name="Item %s" % i,
-                    description="Item description %s" % i,
-                    on_enter=HideWindowAction(),
-                )
-            )
+        searchKeyword = event.get_argument()
+        if not searchKeyword:
+            return
 
-        return RenderResultListAction(items)
+        return RenderResultListAction(animego.search(searchKeyword))
 
 
 if __name__ == "__main__":
