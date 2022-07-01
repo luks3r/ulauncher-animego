@@ -17,7 +17,9 @@ class KeywordQueryEventListener(EventListener):
         if not searchKeyword:
             return
 
-        return RenderResultListAction(animego.search(searchKeyword))
+        return RenderResultListAction(
+            animego.search(searchKeyword, extension.preferences)
+        )
 
 
 if __name__ == "__main__":
